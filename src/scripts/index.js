@@ -29,3 +29,15 @@ function Car(id) {
 
 let car = new Car(123);
 console.log(car.getId());
+
+
+function Suv(id) {
+    this.id = id;
+}
+
+Suv.prototype.getId = function() {
+    return this.id;
+};
+
+let suv = new Suv(123);
+console.log( suv.getId() );
