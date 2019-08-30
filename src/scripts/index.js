@@ -1,43 +1,16 @@
 import '../styles/index.scss';
+import {Car} from './models/car';
 
-let o = {
-    cardId: 123,
-    getId: function(prefix) {
-        return prefix + this.cardId.toString();
+let obj = {
+    id: 123,
+    printId: function (prefix) {
+        console.log( prefix + this.id.toString() );
     }
 };
 
-let newObj = {cardId: 456};
+let newObj = { id: 456};
 
-// Changing context to change "this" and assign
-let newFunc = o.getId.bind(newObj, ["ID: "]);
-console.log(newFunc());
-// Output: 456
-
-let getId_1 = (prefix, suffix) => prefix + 123 + suffix;
-let getId_2 = (prefix, suffix) => {
-    return prefix + 123 + suffix;
-};
-console.log(getId_1('ID: ', '!'));
-
-function Car(id) {
-    this.id = id;
-    this.getId = function() {
-        return this.id;
-    };
-}
+obj.printId.apply(newObj, ["ID: "]);
 
 let car = new Car(123);
-console.log(car.getId());
-
-
-function Suv(id) {
-    this.id = id;
-}
-
-Suv.prototype.getId = function() {
-    return this.id;
-};
-
-let suv = new Suv(123);
-console.log( suv.getId() );
+console.log(car);
