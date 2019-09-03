@@ -1,10 +1,15 @@
 import '../styles/index.scss';
 
-import $ from 'jquery';
+let promise = new Promise(
+    function(resolve, reject) {
+        setTimeout(resolve, 100, 'someValue');
+    }
+);
 
-let promise = $.get("https://www.google.com");
+console.log(promise);
 
+// settling a promise
 promise.then(
-    data => console.log('Success: ', data),
-    error => console.log('Error: ', error)
+    value => console.log('Fulfilled: ' + value),
+    error => console.log('Rejected: ' + error)
 );
